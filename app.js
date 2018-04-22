@@ -13,14 +13,21 @@ console.log(argv);
 if (action === 'add') {
   var note = notes.addNote(argv.title, argv.body);
   if (note) {
-    console.log('Added note:', note.title, note.body);
+    console.log('Added note:');
+    notes.logNote(note);
   } else {
     console.log(`Note with title '${argv.title}' already exists`);
   }
 } else if (action === 'list') {
   notes.getAll();
 } else if (action === 'read') {
-  notes.getNote(argv.title);
+  var note = notes.getNote(argv.title);
+  if (note) {
+    console.log('Note found');
+    notes.logNote(note);
+  } else {
+    console.log('Note not found');
+  }
 } else if (action === 'remove') {
   var noteRemoved = notes.removeNote(argv.title);
   var message = noteRemoved ? `Removed note with title ${argv.title}` : `Note not found`;
