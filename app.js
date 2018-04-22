@@ -22,7 +22,9 @@ if (action === 'add') {
 } else if (action === 'read') {
   notes.getNote(argv.title);
 } else if (action === 'remove') {
-  notes.removeNote(argv.title);
+  var noteRemoved = notes.removeNote(argv.title);
+  var message = noteRemoved ? `Removed note with title ${argv.title}` : `Note not found`;
+  console.log(message);
 } else {
   console.log(`Command: ${command} unknown.`)
 }
