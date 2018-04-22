@@ -11,7 +11,12 @@ const action = process.argv[2];
 console.log(argv);
 
 if (action === 'add') {
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log('Added note:', note.title, note.body);
+  } else {
+    console.log(`Note with title '${argv.title}' already exists`);
+  }
 } else if (action === 'list') {
   notes.getAll();
 } else if (action === 'read') {
