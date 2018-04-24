@@ -29,6 +29,7 @@ const argv = yargs
   })
   .help()
   .argv;
+
 const action = argv._[0];
 
 if (action === 'add') {
